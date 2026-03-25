@@ -1,8 +1,10 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
+  cacheComponents: true,      // включает 'use cache'
+  turbopack: {
+    root: __dirname,          // исправляет ошибку с tailwindcss
+  },
 };
 
 export default nextConfig;

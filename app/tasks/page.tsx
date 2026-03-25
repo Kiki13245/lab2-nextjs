@@ -1,7 +1,6 @@
-
 import TasksList from './TasksList';
+import { getTasks } from './getTasks';
 
-// Тип для задачи из API
 type Todo = {
   userId: number;
   id: number;
@@ -10,12 +9,7 @@ type Todo = {
 };
 
 export default async function TasksPage() {
-  // Запрос на сервере (кэшируется по умолчанию в Next.js)
-  const res = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=10');
-  if (!res.ok) {
-    throw new Error('Failed to fetch tasks');
-  }
-  const tasks: Todo[] = await res.json();
+  const tasks: Todo[] = await getTasks();
 
   return (
     <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
